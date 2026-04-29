@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayCircle Bhubaneswar | Book Sports Venues & Find Players</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f6f8fb;
+      color: #172033;
+    }
+
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar {
+      max-width: 1180px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1155cc;
+    }
+
+    .logo span {
+      color: #ff8a00;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #172033;
+      margin-left: 24px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #1155cc;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1155cc, #00a0ff);
+      color: white;
+      padding: 80px 20px;
+    }
+
+    .hero-content {
+      max-width: 1180px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      margin-right: 12px;
+    }
+
+    .primary-btn {
+      background: #ff8a00;
+      color: white;
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #1155cc;
+    }
+
+    .hero-card {
+      background: white;
+      color: #172033;
+      padding: 28px;
+      border-radius: 22px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 16px;
+      color: #1155cc;
+    }
+
+    .search-box {
+      display: grid;
+      gap: 12px;
+    }
+
+    .search-box input,
+    .search-box select {
+      padding: 14px;
+      border: 1px solid #dce3ef;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #657085;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 24px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .feature-card .icon {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .filters input,
+    .filters select {
+      padding: 13px;
+      border: 1px solid #dce3ef;
+      border-radius: 10px;
+      min-width: 210px;
+      font-size: 15px;
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .venue-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .venue-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .venue-img {
+      height: 170px;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+
+    .venue-body {
+      padding: 20px;
+    }
+
+    .venue-body h3 {
+      margin-bottom: 8px;
+      color: #172033;
+    }
+
+    .venue-meta {
+      color: #657085;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .price {
+      font-weight: 800;
+      color: #1155cc;
+      margin: 12px 0;
+    }
+
+    .tag-row {
+      margin: 12px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef5ff;
+      color: #1155cc;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .card-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .whatsapp-btn,
+    .map-btn {
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+    }
+
+    .map-btn {
+      background: #eef2f7;
+      color: #172033;
+    }
+
+    .cta {
+      background: #172033;
+      color: white;
+      border-radius: 28px;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .cta h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      margin-bottom: 24px;
+      color: #dce3ef;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content,
+      .features,
+      .venue-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">PlayCircle <span>Bhubaneswar</span></div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#venues">Venues</a>
+        <a href="#players">Find Players</a>
+        <a href="#list">List Your Venue</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div>
+          <h1>Book Sports Venues & Find Players in Bhubaneswar</h1>
+          <p>
+            Discover badminton courts, football turfs, cricket grounds, coaches and local players near you. Start your game circle today.
+          </p>
+          <div class="hero-buttons">
+            <a href="#venues" class="primary-btn">Explore Venues</a>
+            <a href="https://wa.me/919337747415?text=Hi%20PlayCircle%20Bhubaneswar%2C%20I%20want%20to%20book%20a%20sports%20venue" class="secondary-btn" target="_blank">Book on WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Quick Search</h3>
+          <div class="search-box">
+            <input type="text" placeholder="Search area: Patia, Hanspal, Khandagiri" />
+            <select>
+              <option>Select Sport</option>
+              <option>Badminton</option>
+              <option>Football</option>
+              <option>Cricket</option>
+              <option>Swimming</option>
+            </select>
+            <select>
+              <option>Preferred Time</option>
+              <option>Morning</option>
+              <option>Evening</option>
+              <option>Weekend</option>
+            </select>
+            <a class="primary-btn" href="#venues" style="text-align:center; margin:0;">Search Venues</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>What You Can Do</h2>
+        <p>Everything needed to play more sports locally.</p>
+      </div>
+      <div class="features">
+        <div class="feature-card">
+          <div class="icon">🏸</div>
+          <h3>Book Courts</h3>
+          <p>Find badminton courts, turfs and grounds nearby.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🤝</div>
+          <h3>Find Players</h3>
+          <p>Join local games or create your own sports circle.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🏆</div>
+          <h3>Events</h3>
+          <p>Weekend tournaments, corporate games and leagues.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🧑‍🏫</div>
+          <h3>Coaches</h3>
+          <p>Connect with trainers for badminton, cricket and fitness.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="venues">
+      <div class="section-title">
+        <h2>Popular Venues</h2>
+        <p>Sample listings. Replace these with real venue details.</p>
+      </div>
+
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search venue or area" onkeyup="filterVenues()" />
+        <select id="sportFilter" onchange="filterVenues()">
+          <option value="all">All Sports</option>
+          <option value="badminton">Badminton</option>
+          <option value="football">Football</option>
+          <option value="cricket">Cricket</option>
+        </select>
+        <select id="areaFilter" onchange="filterVenues()">
+          <option value="all">All Areas</option>
+          <option value="patia">Patia</option>
+          <option value="hanspal">Hanspal</option>
+          <option value="khandagiri">Khandagiri</option>
+        </select>
+      </div>
+
+      <div class="venue-grid" id="venueGrid">
+        <div class="venue-card" data-sport="badminton" data-area="patia" data-name="Patia Indoor Badminton Arena">
+          <div class="venue-img">🏸</div>
+          <div class="venue-body">
+            <h3>Patia Indoor Badminton Arena</h3>
+            <p class="venue-meta">📍 Patia, Bhubaneswar</p>
+            <p class="venue-meta">⏰ 6 AM - 10 PM</p>
+            <div class="tag-row"><span class="tag">Badminton</span><span class="tag">Indoor</span></div>
+            <p class="price">From ₹350 / hour</p>
+            <div class="card-buttons">
+              <a class="whatsapp-btn" target="_blank" href="https://wa.me/919337747415?text=Hi%20PlayCircle%2C%20I%20want%20to%20book%20Patia%20Indoor%20Badminton%20Arena">Book Now</a>
+              <a class="map-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Patia+Bhubaneswar">Map</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="venue-card" data-sport="football" data-area="hanspal" data-name="Hanspal Football Turf">
+          <div class="venue-img">⚽</div>
+          <div class="venue-body">
+            <h3>Hanspal Football Turf</h3>
+            <p class="venue-meta">📍 Hanspal, Bhubaneswar</p>
+            <p class="venue-meta">⏰ 5 AM - 11 PM</p>
+            <div class="tag-row"><span class="tag">Football</span><span class="tag">Turf</span></div>
+            <p class="price">From ₹1,200 / hour</p>
+            <div class="card-buttons">
+              <a class="whatsapp-btn" target="_blank" href="https://wa.me/919337747415?text=Hi%20PlayCircle%2C%20I%20want%20to%20book%20Hanspal%20Football%20Turf">Book Now</a>
+              <a class="map-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hanspal+Bhubaneswar">Map</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="venue-card" data-sport="cricket" data-area="khandagiri" data-name="Khandagiri Cricket Nets">
+          <div class="venue-img">🏏</div>
+          <div class="venue-body">
+            <h3>Khandagiri Cricket Nets</h3>
+            <p class="venue-meta">📍 Khandagiri, Bhubaneswar</p>
+            <p class="venue-meta">⏰ 7 AM - 9 PM</p>
+            <div class="tag-row"><span class="tag">Cricket</span><span class="tag">Practice Nets</span></div>
+            <p class="price">From ₹500 / hour</p>
+            <div class="card-buttons">
+              <a class="whatsapp-btn" target="_blank" href="https://wa.me/919337747415?text=Hi%20PlayCircle%2C%20I%20want%20to%20book%20Khandagiri%20Cricket%20Nets">Book Now</a>
+              <a class="map-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Khandagiri+Bhubaneswar">Map</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="players">
+      <div class="section-title">
+        <h2>Find Players</h2>
+        <p>Start with WhatsApp groups before building full login features.</p>
+      </div>
+      <div class="cta">
+        <h2>Need players for today?</h2>
+        <p>Join our local WhatsApp circle and connect with nearby players.</p>
+        <a class="primary-btn" target="_blank" href="https://wa.me/919337747415?text=Hi%20PlayCircle%2C%20I%20want%20to%20join%20the%20sports%20players%20group">Join Player Circle</a>
+      </div>
+    </section>
+
+    <section id="list">
+      <div class="cta">
+        <h2>Own a sports venue?</h2>
+        <p>List your court, turf or academy on PlayCircle Bhubaneswar.</p>
+        <a class="primary-btn" target="_blank" href="https://wa.me/919337747415?text=Hi%20PlayCircle%2C%20I%20want%20to%20list%20my%20sports%20venue">List Your Venue</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 PlayCircle Bhubaneswar. Built for local sports lovers.</p>
+  </footer>
+
+  <script>
+    function filterVenues() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const sportFilter = document.getElementById('sportFilter').value;
+      const areaFilter = document.getElementById('areaFilter').value;
+      const cards = document.querySelectorAll('.venue-card');
+
+      cards.forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const sport = card.dataset.sport;
+        const area = card.dataset.area;
+
+        const matchesSearch = name.includes(searchInput) || area.includes(searchInput) || sport.includes(searchInput);
+        const matchesSport = sportFilter === 'all' || sport === sportFilter;
+        const matchesArea = areaFilter === 'all' || area === areaFilter;
+
+        if (matchesSearch && matchesSport && matchesArea) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
